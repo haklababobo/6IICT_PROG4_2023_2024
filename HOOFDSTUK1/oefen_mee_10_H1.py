@@ -28,7 +28,7 @@ for x, y in dictionary.items():
 for x in dictionary.values():
     print(x)
 
-" Vul aan: [0, 1, 1, 2, 3]"
+" Vul aan: 1"
 print( dictionary.pop("c"))
 
 "Vul aan: [('a', 0), ('b', 1), ('d', 2), ('e', 3)]"
