@@ -11,7 +11,7 @@ while True:
     naam = input("Geef de naam van de gast in (of STOP om te stoppen): ")
 
     # Controleer of de gebruiker wil stoppen
-    if naam.upper() == "STOP":
+    if naam.upper() == "STOP":  
         break
 
     # Controleer of de naam in de gastenlijst staat
