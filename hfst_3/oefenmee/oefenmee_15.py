@@ -14,6 +14,11 @@ resultaat = 0
 
 # Toont het resultaat in het Label label_result.
 def toon_resultaat():
+    global resultaat
+    resultaat += getal_1 
+    resultaat += getal_2
+    print(resultaat)
+    label_result.config(text = resultaat)
     """ TODO:
     Deze functie is gelinkt aan de Button knop.
 

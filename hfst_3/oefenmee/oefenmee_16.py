@@ -11,6 +11,11 @@ app = tk.Tk()
 
 zin = ""
 def toevoegen():
+    global zin
+    zin += veld.get()
+    print(zin)
+    label_zin.config(text = zin)
+    
     """TODO: 
     Deze functie is gelinkt aan de Button knop.
 
