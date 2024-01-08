@@ -1,57 +1,69 @@
-"""
-Volg de instructies van oefen mee 12.
-In deel 1 van de oefen mee maak je het uiterlijk van een rekenmachine.
-In deel 2 zal je deze ook echt laten werken.
-
-    Tip! Je kan instellingen van widgets ook inladen via een dictionary.
-         Op deze manier kan je veel gelijkaardige widgets snel opstellen en aanpassen.
-         Er is een voorbeeld onderaan de oefen mee voorzien.
-"""
 import tkinter as tk
+
+def knop_nummer_ingedrukt(nummer):
+    def inner():
+        veld.insert(tk.END, str(nummer))
+    return inner
+
+def plus_ingedrukt():
+    global getal_1, operator
+    operator = "+"
+    getal_1 = float(veld.get())
+    veld.delete(0, tk.END)
+
+def min_ingedrukt():
+    global getal_1, operator
+    operator = "-"
+    getal_1 = float(veld.get())
+    veld.delete(0, tk.END)
+
+def isgelijk_ingedrukt():
+    getal_2 = float(veld.get())
+    veld.delete(0, tk.END)
+    if operator == "+":
+        resultaat = getal_1 + getal_2
+    elif operator == "-":
+        resultaat = getal_1 - getal_2
+    else:
+        resultaat = "Error"
+    veld.insert(tk.END, str(resultaat))
+
+def clr_ingedrukt():
+    global getal_1, getal_2, operator
+    getal_1 = 0
+    getal_2 = 0
+    operator = ""
+    veld.delete(0, tk.END)
+
 app = tk.Tk()
 
-app.resizable (width= False, height= False)
+app.resizable(width=False, height=False)
 
 settings = {
-    "master": app, "width" : 6, "height" : 2, "borderwidth" : 3, 
-    "highlightthickness": 2,"highlightbackground": "black"
+    "master": app, "width": 6, "height": 2, "borderwidth": 3,
+    "highlightthickness": 2, "highlightbackground": "black"
 }
 
-veld = tk.Entry(master=app, background="lime", borderwidth= 3)
-veld.grid(row=0 , column = 0, columnspan = 3)
+veld = tk.Entry(master=app, background="lime", borderwidth=3)
+veld.grid(row=0, column=0, columnspan=3)
 
-knop1 = tk.Button(**settings, text="1")
-knop1.grid(row=1, column=0)
-knop2 = tk.Button(**settings, text="2")
-knop2.grid(row=1,column=1)
-knop3 = tk.Button(**settings, text="3")
-knop3.grid(row=1,column=2)
+knop_nummers = [tk.Button(**settings, text=str(i), command=knop_nummer_ingedrukt(i)) for i in range(10)]
+knop_nummers[0].grid(row=4, column=0)
+for i in range(1, 10):
+    knop_nummers[i].grid(row=(i - 1) // 3 + 1, column=(i - 1) % 3)
 
-knop4 = tk.Button(**settings, text="4")
-knop4.grid(row=2, column=0)
-knop5 = tk.Button(**settings, text="5")
-knop5.grid(row=2,column=1)
-knop6 = tk.Button(**settings, text="6")
-knop6.grid(row=2,column=2)
+knop_plus = tk.Button(**settings, text="+", command=plus_ingedrukt)
+knop_plus.grid(row=4, column=1)
+knop_min = tk.Button(**settings, text="-", command=min_ingedrukt)
+knop_min.grid(row=4, column=2)
 
-knop7 = tk.Button(**settings, text="7")
-knop7.grid(row=3, column=0)
-knop8 = tk.Button(**settings, text="8")
-knop8.grid(row=3,column=1)
-knop9 = tk.Button(**settings, text="9")
-knop9.grid(row=3,column=2)
+knop_isgelijk = tk.Button(**settings, text="=", command=isgelijk_ingedrukt)
+knop_isgelijk.grid(row=5, column=0)
+knop_clr = tk.Button(font=("Calibri", 15), text="clr", width=10, height=1, command=clr_ingedrukt)
+knop_clr.grid(row=5, column=1, columnspan=2, pady=10)
 
-knop10 = tk.Button(**settings, text="0")
-knop10.grid(row=4, column=0)
-knop11 = tk.Button(**settings, text="+")
-knop11.grid(row=4,column=1)
-knop12 = tk.Button(**settings, text="-")
-knop12.grid(row=4,column=2)
-
-knop13 = tk.Button(**settings, text= "=")
-knop13.grid(row=5,column=0)
-knop14 = tk.Button(font=("Calibri", 15), text= "clr", width=10, height=1)
-knop14.grid(row=5,column=1, columnspan=2, pady=10)
-
+getal_1 = 0
+getal_2 = 0
+operator = ""
 
 app.mainloop()

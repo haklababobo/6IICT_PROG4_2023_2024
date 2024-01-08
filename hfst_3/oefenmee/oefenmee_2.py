@@ -26,4 +26,3 @@ label_5 = tk.Label(master=app, text="Label 5")
 label_5.grid(row=5, column=0)
 
 app.mainloop()
-
