@@ -4,30 +4,43 @@
 " Startcode: "
 
 # # import raspberry pi GPIO module
-# import RPi.GPIO as GPIO
-# import time
+import RPi.GPIO as GPIO
+import time
 
-# # setup pin 7 & 31 as output
-# GPIO.setup(7, GPIO.OUT)
-# GPIO.setup(31, GPIO.OUT)
+# setup pin 7 & 31 as output
+GPIO.setup(7, GPIO.OUT)
+GPIO.setup(31, GPIO.OUT)
 
-# # Turn on pin 7 & 31
-# GPIO.output(7, GPIO.HIGH)
-# GPIO.output(31, GPIO.HIGH)
+# Turn on pin 7 & 31
+GPIO.output(7, GPIO.HIGH)
+GPIO.output(31, GPIO.HIGH)
 
 
 " Via onderstaande code kan je de klasse Led testen. "
 
-# # Maak een led aan op pin 5 en pin 21
-# led_5 = Led(5)
-# led_21 = Led(21)
+import time 
 
-# # Schakel de leds afwisselend aan/uit.
-# while True:
-#     led_5.aan()
-#     led_21.uit()
-#     time.sleep(1)
+class Led:
+    def __init__(self, nummer):
+        self.pin_nummer = nummer
+        GPIO.setup(nummer, GPIO.OUT)
 
-#     led_5.uit()
-#     led_21.aan()
-#     time.sleep(1)
+    def aan(self, nummer):
+        GPIO.output(nummer, GPIO.HIGH)
+
+    def uit(self, nummer):
+        GPIO.output(nummer, GPIO.LOW)
+
+# Maak een led aan op pin 5 en pin 21
+led_5 = Led(5)
+led_21 = Led(21)
+    
+# Schakel de leds afwisselend aan/uit.
+while True:
+    led_5.aan()
+    led_21.uit()
+    time.sleep(1)
+
+    led_5.uit()
+    led_21.aan()
+    time.sleep(1)

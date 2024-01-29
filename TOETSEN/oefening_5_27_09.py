@@ -87,4 +87,4 @@ while True: # Start de app.
 
     else: # Verkeerde input gegeven.
         print(f"\nDit is geen optie. Gelieve opnieuw te proberen.")
-
+        
