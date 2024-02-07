@@ -7,13 +7,16 @@ class Dier():
     def heeft_naam(self):
         print(self.naam)
 
+class Hond(Dier):
+    def info(self):
+        print(f'De hond {self.naam} is {self.leeftijd} jaar oud.')
 
 " Niveau 1 "
-# hond = Hond("Fido", 3)
-# dier = Dier("George", 10)
+hond = Hond("Fido", 3)
+dier = Dier("George", 10)
 
-# hond.info() # De hond Fido is 3 jaar oud.
-# dier.info() # AttributeError: no attribute 'info'.
+hond.info() # De hond Fido is 3 jaar oud.
+dier.info() # AttributeError: no attribute 'info'.
 
 " Niveau 2 "
 # hond = Hond("Fido", 3)

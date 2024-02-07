@@ -1,21 +1,23 @@
-" Ouder Dier heeft 2 methoden & eigenschappen.  "
-class Dier():
+class Dier:
     def __init__(self, naam, leeftijd):
         self.naam = naam
         self.leeftijd = leeftijd
 
     def heeft_naam(self):
-        # Niveau 3: print(self.naam)
-        print(f"Dit dier heeft de naam {self.naam}.") # Niveau 3
+        print(f"Dit dier heeft de naam {self.naam}.")
 
-class Hond():
-    def _init_(self, naam, leeftijd):
-        self.naam = naam
-        self.leeftijd = leeftijd
+class Hond(Dier):
+    def __init__(self, naam, leeftijd):
+        super().__init__(naam, leeftijd)
 
     def kind(self):
-        print(f'Deze hond{self.kind}')
+        print(f'Deze hond heeft een jong.')
 
-" Kind Kat neemt deze methoden & eigenschappen over. "
+hond_1 = Hond("Boris", 9)
+print(f"{hond_1.naam} heeft {hond_1.leeftijd} jaar oud.")
+
 class Kat(Dier):
     pass
+
+kat_1 = Kat("Fluffy", 5)
+kat_1.heeft_naam()
