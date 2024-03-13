@@ -20,62 +20,7 @@ GPIO.setup(buttonPin1, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(buttonPin2, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 # Functie om te draaien
-def draaie(stap):
-    if stap == 0:
-        # Stap 0: zet i1, i2 en i3 laag, i4 hoog
-        GPIO.output(i1, GPIO.LOW)
-        GPIO.output(i2, GPIO.LOW)
-        GPIO.output(i3, GPIO.LOW)
-        GPIO.output(i4, GPIO.HIGH)
-    elif stap == 1:
-        # Stap 1: zet i1 en i2 laag, i3 en i4 hoog
-        GPIO.output(i1, GPIO.LOW)
-        GPIO.output(i2, GPIO.LOW)
-        GPIO.output(i3, GPIO.HIGH)
-        GPIO.output(i4, GPIO.HIGH)
-    elif stap == 2:
-        # Stap 2: zet i1 en i2 laag, i3 laag, i4 hoog
-        GPIO.output(i1, GPIO.LOW)
-        GPIO.output(i2, GPIO.LOW)
-        GPIO.output(i3, GPIO.HIGH)
-        GPIO.output(i4, GPIO.LOW)
-    elif stap == 3:
-        # Stap 3: zet i1 laag, i2 en i3 hoog, i4 laag
-        GPIO.output(i1, GPIO.LOW)
-        GPIO.output(i2, GPIO.HIGH)
-        GPIO.output(i3, GPIO.HIGH)
-        GPIO.output(i4, GPIO.LOW)
-    elif stap == 4:
-        # Stap 4: zet i1 laag, i2 hoog, i3 en i4 laag
-        GPIO.output(i1, GPIO.LOW)
-        GPIO.output(i2, GPIO.HIGH)
-        GPIO.output(i3, GPIO.LOW)
-        GPIO.output(i4, GPIO.LOW)
-    elif stap == 5:
-        # Stap 5: zet i1, i2 hoog, i3 en i4 laag
-        GPIO.output(i1, GPIO.HIGH)
-        GPIO.output(i2, GPIO.HIGH)
-        GPIO.output(i3, GPIO.LOW)
-        GPIO.output(i4, GPIO.LOW)
-    elif stap == 6:
-        # Stap 6: zet i1 hoog, i2 en i3 laag, i4 laag
-        GPIO.output(i1, GPIO.HIGH)
-        GPIO.output(i2, GPIO.LOW)
-        GPIO.output(i3, GPIO.LOW)
-        GPIO.output(i4, GPIO.LOW)
-    elif stap == 7:
-        # Stap 7: zet i1 hoog, i2 laag, i3 en i4 hoog
-        GPIO.output(i1, GPIO.HIGH)
-        GPIO.output(i2, GPIO.LOW)
-        GPIO.output(i4, GPIO.HIGH)
-        GPIO.output(i3, GPIO.LOW)
-    else:
-        # Ongeldige stap: zet alle pinnen laag
-        GPIO.output(i1, GPIO.LOW)
-        GPIO.output(i2, GPIO.LOW)
-        GPIO.output(i3, GPIO.LOW)
-        GPIO.output(i4, GPIO.LOW)
-
+mymotortest.motor_run(GPIOPins, wait, steps, counterclockwise, verbose, steptype, initdelay)
 
 # Hoofdprogramma
 try:

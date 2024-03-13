@@ -1,8 +1,22 @@
 # Niveau 1: bepaal sommatie van een getal recursief.
 
+def sommatie(getal):
+    if getal == 1:
+        return 1
+   
+    vorige_sommato = sommatie( getal-1 )
+    return  getal + vorige_sommato
 
-# Niveau 2: bepaal sommatie van een getal met while-loop.
+# niveau 2: bepaal sommatie van een getal met while-loop.
 
+def sommatie(getal):
+ 
+    uitkomst = 0
+    while getal > 0:
+        uitkomst = uitkomst + getal
+        getal = getal - 1
+ 
+    return uitkomst
 
 
 print( sommatie(1) )   # 1
